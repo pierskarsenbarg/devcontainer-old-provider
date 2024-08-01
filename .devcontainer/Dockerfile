@@ -10,3 +10,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 ARG PULUMI_VERSION
 RUN curl -fsSL https://get.pulumi.com/ | bash -s -- --version $PULUMI_VERSION && \
     mv ~/.pulumi/bin/* /usr/bin
+
+ARG PULUMI_ACCESS_TOKEN
+
+ENV PULUMI_ACCESS_TOKEN $PULUMI_ACCESS_TOKEN
+
+RUN pulumi login
+
